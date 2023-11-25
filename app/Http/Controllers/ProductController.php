@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductStorRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('product-view');
+        // Not use
     }
 
     /**
@@ -23,7 +25,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        // Not use
     }
 
     /**
@@ -32,9 +34,16 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductStorRequest $request)
     {
-        //
+        $data = new Product();
+        $data->name = $request->name;
+        $data->quantity = $request->quantity;
+        $data->price = $request->price;
+        $data->save();
+
+        session()->flash('success', 'Product successfully added !!');
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -45,7 +54,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        // Not use
     }
 
     /**

@@ -20,10 +20,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
 Route::middleware('auth')->group(function (){
     //Product Crud
-    Route::resource('product', ProductController::class,['names'=>'products'])->except([ 'show','create']);
+    Route::resource('product', ProductController::class,['names'=>'products'])->except(['index', 'show','create']);
 
 });

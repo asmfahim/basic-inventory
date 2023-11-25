@@ -24,7 +24,7 @@ class ProductStorRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255| min:3|string',
+            'name' => 'required|max:255| min:3|string| unique:products',
             'quantity' => 'required |numeric',
             'price' => 'required | numeric',
         ];

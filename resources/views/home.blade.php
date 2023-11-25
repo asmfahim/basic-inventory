@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('PRODUCT CREATE') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('products.store') }}">
+                    <form method="POST" action="{{ route('product.store') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -24,7 +24,7 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                             <label for="price" class=" col-form-label">{{ __('Price') }}</label>
-                                <input id="price" type="price" class="form-control @error('price') is-invalid @enderror" name="price" required autocomplete="price">
+                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" required autocomplete="price">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -69,13 +69,13 @@
                                     <td>
                                         <ul class="d-flex justify-content-center">
                                                 <li class="mr-2 h5 list-inline-item">
-                                                    <a class="btn btn-info" href="{{route('products.edit',$row->id)}}" class="text-secondary">Edit</a>
+                                                    <a class="btn btn-info" href="{{route('product.edit',$row->id)}}" class="text-secondary">Edit</a>
                                                 </li>
                                                 <li class="h5 list-inline-item">
-                                                    <a class="btn btn-danger" href="{{route('products.destroy',$row->id)}}" class="text-danger" onclick="show_confirm('delete-form-{{$row->id}}')">
+                                                    <a class="btn btn-danger" href="{{route('product.destroy',$row->id)}}" class="text-danger" onclick="show_confirm('delete-form-{{$row->id}}')">
                                                         Delete
                                                     </a>
-                                                    <form id="delete-form-{{ $row->id }}" action="{{ route('products.destroy', $row->id) }}" method="POST" style="display: none;">
+                                                    <form id="delete-form-{{ $row->id }}" action="{{ route('product.destroy', $row->id) }}" method="POST" style="display: none;">
                                                         @method('DELETE')
                                                         @csrf
                                                     </form>

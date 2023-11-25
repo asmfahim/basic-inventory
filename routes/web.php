@@ -24,6 +24,6 @@ Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])-
 
 Route::middleware('auth')->group(function (){
     //Product Crud
-    Route::resource('product', ProductController::class,['names'=>'products'])->except(['index', 'show','create']);
+    Route::resource('products', ProductController::class,['names'=>'product'])->except(['index', 'show','create']);
 
 });
